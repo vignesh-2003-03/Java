@@ -1,0 +1,126 @@
+package Java;
+import java.util.Scanner;
+public class ContactSaving {
+      public int menu() {
+    	
+          System.out.println("if you want save press 1: \nif you want delete press 2: \nif you want view press 3:");
+          Scanner s=new Scanner(System.in);
+          int input=s.nextInt();
+          s.nextLine();
+          return input;
+    	  
+      }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		  System.out.println("Do you want save or delete or view the contact\n");
+		ContactSaving input=new ContactSaving();
+      Scanner s=new Scanner(System.in);
+       String[] arr=new String[50];
+      int count=0;
+
+      
+       switch (input.menu()) {
+       case 1://to save
+    	for (int i1=0,j=0;i1<50;i1++,j++) {
+    	    if (j==3) {
+    	    
+    			j=0;
+    		}
+    	  String[] a={"Name","Email","Phonenumber"};
+    		System.out.printf("Enter the %s :",a[j]);
+    		arr[i1]=s.nextLine();
+    		if(j==2) {
+    			System.out.println("\nif you want to save another contact press 1: \nif you want stop saving press 2: \nif you want to return main menu press 3:");
+    			String ans=s.nextLine();
+    			if (ans.equals("2")) {
+    				break;
+    			}
+    			else if (ans.equals("3")){
+    		
+    			switch (input.menu()){
+    			case 2://to delete
+    		    	   if(arr[0]==(null)) {
+    					   System.out.println("The contact list is Empty");
+    					   break;
+    				   }
+    		    	   System.out.println("Enter the name to Delete the contact :");
+    		    	   String delete=s.nextLine();
+    		    	   for(int i=0;i<50;i++) {
+    		    		    
+    		    		   if(arr[i].equals(delete)) {
+    		    			   arr[i]=null;
+    		    			   arr[i+1]=null;
+    		    			   arr[i+2]=null;
+    		    			   System.out.println("Contact Deleted Succesfully\n");
+    		    			   count=0;
+    		    			   break;
+    		    		   }
+    		    		   else {
+    		    			count=1;
+    		    		   }
+    		    	   }
+    		    	   for(int i=0;i<=i1;i++) {
+    		    		   if(arr[i]!=null) {
+    		    		   System.out.printf("\nName :%s \nEmail :%s \nPhonenumber :%s \n",arr[i],arr[i+1],arr[i+2]);
+    		              i++;
+    		              i++;   
+    		    	   }
+    		    		   }
+    		    	   if(count==1) {
+    		    		   System.out.println("The given name is not founded");
+    		    	   }
+    		    	   break;//case2
+    		       case 3://to view
+    		    	   System.out.print("Do you want search or view all saved contact \npress 1 for search \npress 2 for view all:\n");
+    		    	   int sel=s.nextInt();
+    		    	   if(sel==2)//view all
+    		    	   {
+    		    		   for(int i=0;i<=i1;i++) {
+        		    		   if(arr[i]!=null) {
+        		    		   System.out.printf("\nName :%s \nEmail :%s \nPhonenumber :%s \n",arr[i],arr[i+1],arr[i+2]);
+        		    		   i++;
+         		               i++;  
+        		    	   }
+    				   }
+    		    		   }
+    		    	    else if(sel==1) //search
+    		    	    {
+    		    	   System.out.println("Enter the name to view the contact detial:");
+    		    	   String view=s.nextLine();
+    		    	   for(int i=0;i<51;i++) {
+    		    		 
+    		    		   if (arr[i].equals(view)) {
+    		    			   System.out.printf("Name :%s ,Email :%s ,phonenumber :%s",arr[i],arr[i+1],arr[i+2]);
+    		    			   count=0;
+    		    			   break;
+    		    		   }
+    		    		   else {
+    		    			   count=1;  
+    		    		   }
+    		    	}
+    		    	   if(count==1)
+		    		   {
+		    			   System.out.println("The given name is not founded");
+		    			   }
+    		    	   break;//case3
+    			}
+    			
+    			break;
+    			}break;
+    		}
+    	}
+    	}
+       case 2:
+    	   if(arr[0]==null) {
+			   System.out.println("The contact list is Empty");
+			   break;
+		   }
+       case 3:
+    	   if(arr[0]==null) {
+			   System.out.println("The contact list is Empty");
+			   break;
+    	   }
+    	}
+       }
+       }
+	
